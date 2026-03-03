@@ -6,10 +6,10 @@ import joblib
 
 # Load scaler and selected features
 # The scaler is used to normalize the input features (important for many machine learning models)
-scaler = pickle.load(open('../models/scaler.pk1', 'rb'))
+scaler = pickle.load(open('models/scaler.pk1', 'rb'))
 
 # Load the list of selected features that the model expects
-with open('../models/selected_features.txt', 'r') as f:
+with open('models/selected_features.txt', 'r') as f:
     selected_features = [line.strip() for line in f]
 
 # Define the numeric columns that will be input by the user
@@ -78,7 +78,7 @@ if st.button("Predict"):
     input_selected = input_df_full[selected_features].values
 
     # Load the trained model from a local file
-    model = joblib.load("../models/best_model.pkl")
+    model = joblib.load("models/best_model.pkl")
 
     # Predict the risk of heart disease based on the input features
     prediction = model.predict(input_selected)[0]
